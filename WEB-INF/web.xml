@@ -1,0 +1,1270 @@
+<!DOCTYPE web-app 
+    PUBLIC "-//Sun Microsystems, Inc.//DTD Web Application 2.2//EN" 
+    "http://java.sun.com/j2ee/dtds/web-app_2_2.dtd"> 
+<web-app> 
+  
+    <!-- General description of your web application -->
+  
+    <display-name>Terminkalender</display-name>
+    <description> 
+      Bernhard's Terminkalender
+    </description>
+  
+    <!-- Context initialization parameters that define shared
+         String constants used within your application, which
+         can be customized by the system administrator who is
+         installing your application.  The values actually
+         assigned to these parameters can be retrieved in a
+         servlet or JSP page by calling:
+
+             String value =
+               getServletContext().getInitParameter("name");
+
+         where "name" matches the <param-name> element of
+         one of these initialization parameters.
+
+         You can define any number of context initialization
+         parameters, including zero.
+    -->
+
+    <context-param>
+      <param-name>webmaster</param-name>
+      <param-value>bernhardle@gmx.de</param-value>
+      <description>
+      </description>
+    </context-param>
+
+
+    <!-- Servlet definitions for the servlets that make up
+         your web application, including initialization
+         parameters.  With Tomcat, you can also send requests
+         to servlets not listed here with a request like this:
+
+           http://localhost:8080/{context-path}/servlet/{classname}
+
+         but this usage is not guaranteed to be portable.  It also
+         makes relative references to images and other resources
+         required by your servlet more complicated, so defining
+         all of your servlets (and defining a mapping to them with
+         a <servlet-mapping> element) is recommended.
+
+         Servlet initialization parameters can be retrieved in a
+         servlet or JSP page by calling:
+
+             String value =
+               getServletConfig().getInitParameter("name");
+
+         where "name" matches the <param-name> element of
+         one of these initialization parameters.
+
+         You can define any number of servlets, including zero.
+    -->
+
+<!-- ADDASD -->
+    <servlet>
+      <servlet-name>addasd</servlet-name>
+      <description>
+      </description>
+      <servlet-class>AddAsdServlet</servlet-class>
+      <init-param>
+        <param-name>config</param-name>
+        <param-value>ServletConfig</param-value>
+      </init-param>
+      <init-param>
+        <param-name>schedule</param-name>
+        <param-value>Schedule</param-value>
+      </init-param>
+      <load-on-startup>0</load-on-startup>
+    </servlet>
+
+<!-- ADDASDOK -->
+    <servlet>
+      <servlet-name>addasdok</servlet-name>
+      <description>
+      </description>
+      <servlet-class>ErrorListServlet</servlet-class>
+      <init-param>
+        <param-name>config</param-name>
+        <param-value>ServletConfig</param-value>
+      </init-param>
+      <init-param>
+        <param-name>layout</param-name>
+        <param-value>errorlist</param-value>
+      </init-param>
+      <!-- Load this servlet at server startup time -->
+      <load-on-startup>0</load-on-startup>
+    </servlet>
+
+<!-- ADDASDFAILURE -->
+    <servlet>
+      <servlet-name>addasdfailure</servlet-name>
+      <description>
+      </description>
+      <servlet-class>ErrorListServlet</servlet-class>
+      <init-param>
+        <param-name>config</param-name>
+        <param-value>ServletConfig</param-value>
+      </init-param>
+      <init-param>
+        <param-name>layout</param-name>
+        <param-value>errorlist</param-value>
+      </init-param>
+      <!-- Load this servlet at server startup time -->
+      <load-on-startup>0</load-on-startup>
+    </servlet>
+
+<!-- ADDCOMMENT -->
+    <servlet>
+      <servlet-name>addcomment</servlet-name>
+      <description>
+      </description>
+      <servlet-class>AddCommentServlet</servlet-class>
+      <init-param>
+        <param-name>config</param-name>
+        <param-value>ServletConfig</param-value>
+      </init-param>
+      <init-param>
+        <param-name>schedule</param-name>
+        <param-value>Schedule</param-value>
+      </init-param>
+      <!-- Load this servlet at server startup time -->
+      <load-on-startup>0</load-on-startup>
+    </servlet>
+ 
+<!-- ADDCOMMENTFAILURE -->
+    <servlet>
+      <servlet-name>addcommentfailure</servlet-name>
+      <description>
+      </description>
+      <servlet-class>ErrorListServlet</servlet-class>
+      <init-param>
+        <param-name>config</param-name>
+        <param-value>ServletConfig</param-value>
+      </init-param>
+      <init-param>
+        <param-name>layout</param-name>
+        <param-value>errorlist</param-value>
+      </init-param>
+      <!-- Load this servlet at server startup time -->
+      <load-on-startup>0</load-on-startup>
+    </servlet>
+
+<!-- ADDFORMTYPEFAILURE -->
+    <servlet>
+      <servlet-name>addformtypefailure</servlet-name>
+      <description>
+      </description>
+      <servlet-class>ErrorListServlet</servlet-class>
+      <init-param>
+        <param-name>config</param-name>
+        <param-value>ServletConfig</param-value>
+      </init-param>
+      <init-param>
+        <param-name>layout</param-name>
+        <param-value>errorlist</param-value>
+      </init-param>
+      <!-- Load this servlet at server startup time -->
+      <load-on-startup>0</load-on-startup>
+    </servlet>
+
+<!-- ADDFORMTYPEOK -->
+    <servlet>
+      <servlet-name>addformtypeok</servlet-name>
+      <description>
+      </description>
+      <servlet-class>ErrorListServlet</servlet-class>
+      <init-param>
+        <param-name>config</param-name>
+        <param-value>ServletConfig</param-value>
+      </init-param>
+      <init-param>
+        <param-name>layout</param-name>
+        <param-value>errorlist</param-value>
+      </init-param>
+      <!-- Load this servlet at server startup time -->
+      <load-on-startup>0</load-on-startup>
+    </servlet>
+
+<!-- ADDFORMTYPESHOW -->
+    <servlet>
+      <servlet-name>addformtypeshow</servlet-name>
+      <description>
+      </description>
+      <servlet-class>SelectionServlet</servlet-class>
+      <init-param>
+        <param-name>config</param-name>
+        <param-value>ServletConfig</param-value>
+      </init-param>
+      <init-param>
+        <param-name>schedule</param-name>
+        <param-value>ScheduleRead</param-value>
+      </init-param>
+      <load-on-startup>0</load-on-startup>
+    </servlet>
+
+<!-- ADDFORMTYPESHOWFAILURE -->
+    <servlet>
+      <servlet-name>addformtypeshowfailure</servlet-name>
+      <description>
+      </description>
+      <servlet-class>ErrorListServlet</servlet-class>
+      <init-param>
+        <param-name>config</param-name>
+        <param-value>ServletConfig</param-value>
+      </init-param>
+      <init-param>
+        <param-name>layout</param-name>
+        <param-value>errorlist</param-value>
+      </init-param>
+      <!-- Load this servlet at server startup time -->
+      <load-on-startup>0</load-on-startup>
+    </servlet>
+
+<!-- ADDNOTIFICATION -->
+    <servlet>
+      <servlet-name>addnotification</servlet-name>
+      <description>
+      </description>
+      <servlet-class>AddNotificationServlet</servlet-class>
+      <init-param>
+        <param-name>config</param-name>
+        <param-value>ServletConfig</param-value>
+      </init-param>
+      <init-param>
+        <param-name>schedule</param-name>
+        <param-value>Schedule</param-value>
+      </init-param>
+      <!-- Load this servlet at server startup time -->
+      <load-on-startup>0</load-on-startup>
+    </servlet>
+
+<!-- ADDNOTIFAILURE -->
+    <servlet>
+      <servlet-name>addnotifailure</servlet-name>
+      <description>
+      </description>
+      <servlet-class>ErrorListServlet</servlet-class>
+      <init-param>
+        <param-name>config</param-name>
+        <param-value>ServletConfig</param-value>
+      </init-param>
+      <init-param>
+        <param-name>layout</param-name>
+        <param-value>errorlist</param-value>
+      </init-param>
+      <!-- Load this servlet at server startup time -->
+      <load-on-startup>0</load-on-startup>
+    </servlet>
+
+<!-- ADDTYPE -->
+    <servlet>
+      <servlet-name>addtype</servlet-name>
+      <description>
+      </description>
+      <servlet-class>AddTypeServlet</servlet-class>
+      <init-param>
+        <param-name>config</param-name>
+        <param-value>ServletConfig</param-value>
+      </init-param>
+      <init-param>
+        <param-name>schedule</param-name>
+        <param-value>Schedule</param-value>
+      </init-param>
+      <load-on-startup>0</load-on-startup>
+    </servlet>
+
+<!-- ADDTYPEOK -->
+    <servlet>
+      <servlet-name>addtypeok</servlet-name>
+      <description>
+      </description>
+      <servlet-class>ErrorListServlet</servlet-class>
+      <init-param>
+        <param-name>config</param-name>
+        <param-value>ServletConfig</param-value>
+      </init-param>
+      <init-param>
+        <param-name>layout</param-name>
+        <param-value>errorlist</param-value>
+      </init-param>
+      <!-- Load this servlet at server startup time -->
+      <load-on-startup>0</load-on-startup>
+    </servlet>
+
+<!-- ADDTYPEFAILURE -->
+    <servlet>
+      <servlet-name>addtypefailure</servlet-name>
+      <description>
+      </description>
+      <servlet-class>ErrorListServlet</servlet-class>
+      <init-param>
+        <param-name>config</param-name>
+        <param-value>ServletConfig</param-value>
+      </init-param>
+      <init-param>
+        <param-name>layout</param-name>
+        <param-value>errorlist</param-value>
+      </init-param>
+      <!-- Load this servlet at server startup time -->
+      <load-on-startup>0</load-on-startup>
+    </servlet>
+
+<!-- ADDUSER -->
+    <servlet>
+      <servlet-name>adduser</servlet-name>
+      <description>
+      </description>
+      <servlet-class>AddUserServlet</servlet-class>
+      <init-param>
+        <param-name>config</param-name>
+        <param-value>ServletConfig</param-value>
+      </init-param>
+      <init-param>
+        <param-name>schedule</param-name>
+        <param-value>Schedule</param-value>
+      </init-param>
+      <load-on-startup>0</load-on-startup>
+    </servlet>
+
+<!-- ADDUSEROK -->
+    <servlet>
+      <servlet-name>adduserok</servlet-name>
+      <description>
+      </description>
+      <servlet-class>ErrorListServlet</servlet-class>
+      <init-param>
+        <param-name>config</param-name>
+        <param-value>ServletConfig</param-value>
+      </init-param>
+      <init-param>
+        <param-name>layout</param-name>
+        <param-value>errorlist</param-value>
+      </init-param>
+      <!-- Load this servlet at server startup time -->
+      <load-on-startup>0</load-on-startup>
+    </servlet>
+
+<!-- ADDUSERFAILURE -->
+    <servlet>
+      <servlet-name>adduserfailure</servlet-name>
+      <description>
+      </description>
+      <servlet-class>ErrorListServlet</servlet-class>
+      <init-param>
+        <param-name>config</param-name>
+        <param-value>ServletConfig</param-value>
+      </init-param>
+      <init-param>
+        <param-name>layout</param-name>
+        <param-value>errorlist</param-value>
+      </init-param>
+      <!-- Load this servlet at server startup time -->
+      <load-on-startup>0</load-on-startup>
+    </servlet>
+
+<!-- CAPTION -->
+    <servlet>
+      <servlet-name>caption</servlet-name>
+      <description>
+      </description>
+      <servlet-class>CaptionServlet</servlet-class>
+      <init-param>
+        <param-name>config</param-name>
+        <param-value>ServletConfig</param-value>
+      </init-param>
+      <!-- Load this servlet at server startup time -->
+      <load-on-startup>0</load-on-startup>
+    </servlet>
+
+<!-- CHANGEPASSWORD -->
+    <servlet>
+      <servlet-name>changepassword</servlet-name>
+      <description>
+      </description>
+      <servlet-class>ChangePasswordServlet</servlet-class>
+      <init-param>
+        <param-name>config</param-name>
+        <param-value>ServletConfig</param-value>
+      </init-param>
+      <init-param>
+        <param-name>schedule</param-name>
+        <param-value>Schedule</param-value>
+      </init-param>
+      <load-on-startup>0</load-on-startup>
+    </servlet>
+
+<!-- CHANGEPASSWORDOK -->
+    <servlet>
+      <servlet-name>changepasswordok</servlet-name>
+      <description>
+      </description>
+      <servlet-class>ErrorListServlet</servlet-class>
+      <init-param>
+        <param-name>config</param-name>
+        <param-value>ServletConfig</param-value>
+      </init-param>
+      <init-param>
+        <param-name>layout</param-name>
+        <param-value>errorlist</param-value>
+      </init-param>
+      <!-- Load this servlet at server startup time -->
+      <load-on-startup>0</load-on-startup>
+    </servlet>
+
+<!-- CHANGEPASSWORDFAILURE -->
+    <servlet>
+      <servlet-name>changepasswordfailure</servlet-name>
+      <description>
+      </description>
+      <servlet-class>ErrorListServlet</servlet-class>
+      <init-param>
+        <param-name>config</param-name>
+        <param-value>ServletConfig</param-value>
+      </init-param>
+      <init-param>
+        <param-name>layout</param-name>
+        <param-value>errorlist</param-value>
+      </init-param>
+      <!-- Load this servlet at server startup time -->
+      <load-on-startup>0</load-on-startup>
+    </servlet>
+
+<!-- CONNECTIONS -->
+    <servlet>
+      <servlet-name>connections</servlet-name>
+      <description>
+      </description>
+      <servlet-class>ConnectionInfoServlet</servlet-class>
+      <init-param>
+        <param-name>config</param-name>
+        <param-value>ServletConfig</param-value>
+      </init-param>
+      <!-- Load this servlet at server startup time -->
+      <load-on-startup>0</load-on-startup>
+    </servlet>
+
+<!-- DELETE -->
+    <servlet>
+      <servlet-name>delete</servlet-name>
+      <description>
+      </description>
+      <servlet-class>DeleteServlet</servlet-class>
+      <init-param>
+        <param-name>config</param-name>
+        <param-value>ServletConfig</param-value>
+      </init-param>
+      <init-param>
+        <param-name>schedule</param-name>
+        <param-value>Schedule</param-value>
+      </init-param>
+      <!-- Load this servlet at server startup time -->
+      <load-on-startup>0</load-on-startup>
+    </servlet>
+
+<!-- DELETEFAILURE -->
+    <servlet>
+      <servlet-name>deletefailure</servlet-name>
+      <description>
+      </description>
+      <servlet-class>ErrorListServlet</servlet-class>
+      <init-param>
+        <param-name>config</param-name>
+        <param-value>ServletConfig</param-value>
+      </init-param>
+      <init-param>
+        <param-name>layout</param-name>
+        <param-value>errorlist</param-value>
+      </init-param>
+      <!-- Load this servlet at server startup time -->
+      <load-on-startup>0</load-on-startup>
+    </servlet>
+
+<!-- DELFORMTYPESHOW -->
+    <servlet>
+      <servlet-name>delformtypeshow</servlet-name>
+      <description>
+      </description>
+      <servlet-class>SelectionServlet</servlet-class>
+      <init-param>
+        <param-name>config</param-name>
+        <param-value>ServletConfig</param-value>
+      </init-param>
+      <init-param>
+        <param-name>schedule</param-name>
+        <param-value>ScheduleRead</param-value>
+      </init-param>
+      <load-on-startup>0</load-on-startup>
+    </servlet>
+
+<!-- DELFORMTYPESHOWFAILURE -->
+    <servlet>
+      <servlet-name>delformtypeshowfailure</servlet-name>
+      <description>
+      </description>
+      <servlet-class>ErrorListServlet</servlet-class>
+      <init-param>
+        <param-name>config</param-name>
+        <param-value>ServletConfig</param-value>
+      </init-param>
+      <init-param>
+        <param-name>layout</param-name>
+        <param-value>errorlist</param-value>
+      </init-param>
+      <!-- Load this servlet at server startup time -->
+      <load-on-startup>0</load-on-startup>
+    </servlet>
+
+<!-- DELUSER --> 
+    <servlet>
+      <servlet-name>deluser</servlet-name>
+      <description>
+      </description>
+      <servlet-class>DeleteUserServlet</servlet-class>
+      <init-param>
+        <param-name>config</param-name>
+        <param-value>ServletConfig</param-value>
+      </init-param>
+      <init-param>
+        <param-name>schedule</param-name>
+        <param-value>Schedule</param-value>
+      </init-param>
+      <load-on-startup>0</load-on-startup>
+    </servlet>
+
+<!-- DELUSEROK -->
+    <servlet>
+      <servlet-name>deluserok</servlet-name>
+      <description>
+      </description>
+      <servlet-class>ErrorListServlet</servlet-class>
+      <init-param>
+        <param-name>config</param-name>
+        <param-value>ServletConfig</param-value>
+      </init-param>
+      <init-param>
+        <param-name>layout</param-name>
+        <param-value>errorlist</param-value>
+      </init-param>
+      <!-- Load this servlet at server startup time -->
+      <load-on-startup>0</load-on-startup>
+    </servlet>
+
+<!-- DELUSERFAILURE -->
+    <servlet>
+      <servlet-name>deluserfailure</servlet-name>
+      <description>
+      </description>
+      <servlet-class>ErrorListServlet</servlet-class>
+      <init-param>
+        <param-name>config</param-name>
+        <param-value>ServletConfig</param-value>
+      </init-param>
+      <init-param>
+        <param-name>layout</param-name>
+        <param-value>errorlist</param-value>
+      </init-param>
+      <!-- Load this servlet at server startup time -->
+      <load-on-startup>0</load-on-startup>
+    </servlet>
+
+<!-- DELUSERSHOW -->
+    <servlet>
+      <servlet-name>delusershow</servlet-name>
+      <description>
+      </description>
+      <servlet-class>SelectionServlet</servlet-class>
+      <init-param>
+        <param-name>config</param-name>
+        <param-value>ServletConfig</param-value>
+      </init-param>
+      <init-param>
+        <param-name>schedule</param-name>
+        <param-value>ScheduleRead</param-value>
+      </init-param>
+      <load-on-startup>0</load-on-startup>
+    </servlet>
+
+<!-- DETAIL -->
+    <servlet>
+      <servlet-name>detail</servlet-name>
+      <description>
+      </description>
+      <servlet-class>DetailServlet</servlet-class>
+      <init-param>
+        <param-name>config</param-name>
+        <param-value>ServletConfig</param-value>
+      </init-param>
+      <init-param>
+        <param-name>schedule</param-name>
+        <param-value>ScheduleRead</param-value>
+      </init-param>
+      <init-param>
+        <param-name>layout</param-name>
+        <param-value>detail</param-value>
+      </init-param>
+      <init-param>
+        <param-name>url.1</param-name>
+        <param-value>44</param-value>
+      </init-param>
+      <init-param>
+        <param-name>url.2</param-name>
+        <param-value>45</param-value>
+      </init-param>
+      <init-param>
+        <param-name>url.3</param-name>
+        <param-value>47</param-value>
+      </init-param>
+      <init-param>
+        <param-name>url.4</param-name>
+        <param-value>46</param-value>
+      </init-param>
+      <!-- Load this servlet at server startup time -->
+      <load-on-startup>0</load-on-startup>
+    </servlet>
+
+<!-- DOCMENUE -->
+    <servlet>
+      <servlet-name>docmenue</servlet-name>
+      <description>
+      </description>
+      <servlet-class>MenueServlet</servlet-class>
+      <init-param>
+        <param-name>config</param-name>
+        <param-value>ServletConfig</param-value>
+      </init-param>
+      <init-param>
+        <param-name>layout</param-name>
+        <param-value>menue</param-value>
+      </init-param>
+      <!-- Load this servlet at server startup time -->
+      <load-on-startup>0</load-on-startup>
+    </servlet>
+
+<!-- CREATEFAILURE -->
+    <servlet>
+      <servlet-name>createfailure</servlet-name>
+      <description>
+      </description>
+      <servlet-class>ErrorListServlet</servlet-class>
+      <init-param>
+        <param-name>config</param-name>
+        <param-value>ServletConfig</param-value>
+      </init-param>
+      <init-param>
+        <param-name>layout</param-name>
+        <param-value>errorlist</param-value>
+      </init-param>
+      <!-- Load this servlet at server startup time -->
+      <load-on-startup>0</load-on-startup>
+    </servlet>
+
+<!-- FLUSH -->
+    <servlet>
+      <servlet-name>flush</servlet-name>
+      <description>
+      </description>
+      <servlet-class>SimpleTemplateServlet</servlet-class>
+      <init-param>
+        <param-name>config</param-name>
+        <param-value>ServletConfig</param-value>
+      </init-param>
+      <init-param>
+        <param-name>template</param-name>
+        <param-value>flush</param-value>
+      </init-param>
+      <load-on-startup>0</load-on-startup>
+    </servlet>
+
+<!-- INNER -->
+    <servlet>
+      <servlet-name>inner</servlet-name>
+      <description>
+      </description>
+      <servlet-class>InnerFrameServlet</servlet-class>
+      <init-param>
+        <param-name>config</param-name>
+        <param-value>ServletConfig</param-value>
+      </init-param>
+      <!-- Load this servlet at server startup time -->
+      <load-on-startup>0</load-on-startup>
+    </servlet>
+
+<!-- INSERT -->
+    <servlet>
+      <servlet-name>insert</servlet-name>
+      <description>
+      </description>
+      <servlet-class>InsertServlet</servlet-class>
+      <init-param>
+        <param-name>config</param-name>
+        <param-value>ServletConfig</param-value>
+      </init-param>
+      <init-param>
+        <param-name>schedule</param-name>
+        <param-value>Schedule</param-value>
+      </init-param>
+      <!-- Load this servlet at server startup time -->
+      <load-on-startup>0</load-on-startup>
+    </servlet>
+
+<!-- INSERTMENUE -->
+    <servlet>
+      <servlet-name>insertmenue</servlet-name>
+      <description>
+      </description>
+      <servlet-class>MenueServlet</servlet-class>
+      <init-param>
+        <param-name>config</param-name>
+        <param-value>ServletConfig</param-value>
+      </init-param>
+      <init-param>
+        <param-name>layout</param-name>
+        <param-value>insert.mnu</param-value>
+      </init-param>
+      <!-- Load this servlet at server startup time -->
+      <load-on-startup>0</load-on-startup>
+    </servlet>
+
+<!-- LIST -->
+    <servlet>
+      <servlet-name>list</servlet-name>
+      <description>
+      </description>
+      <servlet-class>ListServlet</servlet-class>
+      <init-param>
+        <param-name>config</param-name>
+        <param-value>ServletConfig</param-value>
+      </init-param>
+      <init-param>
+        <param-name>schedule</param-name>
+        <param-value>ScheduleRead</param-value>
+      </init-param>
+      <init-param>
+        <param-name>layout</param-name>
+        <param-value>list</param-value>
+      </init-param>
+      <init-param>
+        <param-name>url.1</param-name>
+        <param-value>36</param-value>
+      </init-param>
+      <init-param>
+        <param-name>url.2</param-name>
+        <param-value>43</param-value>
+      </init-param>
+      <!-- Load this servlet at server startup time -->
+      <load-on-startup>0</load-on-startup>
+    </servlet>
+
+<!-- LOGIN -->
+    <servlet>
+      <servlet-name>login</servlet-name>
+      <description>
+      </description>
+      <servlet-class>LoginServlet</servlet-class>
+      <init-param>
+        <param-name>config</param-name>
+        <param-value>ServletConfig</param-value>
+      </init-param>
+      <init-param>
+        <param-name>schedule</param-name>
+        <param-value>ScheduleRead</param-value>
+      </init-param>
+      <init-param>
+        <param-name>layoutLogin</param-name>
+        <param-value>loginfield</param-value>
+      </init-param>
+      <init-param>
+        <param-name>layoutLogout</param-name>
+        <param-value>logoutfield</param-value>
+      </init-param>
+      <!-- Load this servlet at server startup time -->
+      <load-on-startup>0</load-on-startup>
+    </servlet>
+
+<!-- LOGINFAILURE -->
+    <servlet>
+      <servlet-name>loginfailure</servlet-name>
+      <description>
+      </description>
+      <servlet-class>ErrorListServlet</servlet-class>
+      <init-param>
+        <param-name>config</param-name>
+        <param-value>ServletConfig</param-value>
+      </init-param>
+      <init-param>
+        <param-name>layout</param-name>
+        <param-value>errorlist</param-value>
+      </init-param>
+      <!-- Load this servlet at server startup time -->
+      <load-on-startup>0</load-on-startup>
+    </servlet>
+
+<!-- LOGOUT -->
+    <servlet>
+      <servlet-name>logout</servlet-name>
+      <description>
+      </description>
+      <servlet-class>IntroServlet</servlet-class>
+      <init-param>
+        <param-name>config</param-name>
+        <param-value>ServletConfig</param-value>
+      </init-param>
+      <init-param>
+        <param-name>layout</param-name>
+        <param-value>default</param-value>
+      </init-param>
+      <load-on-startup>0</load-on-startup>
+    </servlet>
+
+<!-- MODASDOK -->
+    <servlet>
+      <servlet-name>modasdok</servlet-name>
+      <description>
+      </description>
+      <servlet-class>ErrorListServlet</servlet-class>
+      <init-param>
+        <param-name>config</param-name>
+        <param-value>ServletConfig</param-value>
+      </init-param>
+      <init-param>
+        <param-name>layout</param-name>
+        <param-value>errorlist</param-value>
+      </init-param>
+      <!-- Load this servlet at server startup time -->
+      <load-on-startup>0</load-on-startup>
+    </servlet>
+
+<!-- MODASDSHOW -->
+    <servlet>
+      <servlet-name>modasdshow</servlet-name>
+      <description>
+      </description>
+      <servlet-class>SelectionServlet</servlet-class>
+      <init-param>
+        <param-name>config</param-name>
+        <param-value>ServletConfig</param-value>
+      </init-param>
+      <init-param>
+        <param-name>schedule</param-name>
+        <param-value>ScheduleRead</param-value>
+      </init-param>
+      <load-on-startup>0</load-on-startup>
+    </servlet>
+
+<!-- MODTYPEOK -->
+    <servlet>
+      <servlet-name>modtypeok</servlet-name>
+      <description>
+      </description>
+      <servlet-class>ErrorListServlet</servlet-class>
+      <init-param>
+        <param-name>config</param-name>
+        <param-value>ServletConfig</param-value>
+      </init-param>
+      <init-param>
+        <param-name>layout</param-name>
+        <param-value>errorlist</param-value>
+      </init-param>
+      <!-- Load this servlet at server startup time -->
+      <load-on-startup>0</load-on-startup>
+    </servlet>
+
+<!-- MODTYPEFAILURE -->
+    <servlet>
+      <servlet-name>modtypefailure</servlet-name>
+      <description>
+      </description>
+      <servlet-class>ErrorListServlet</servlet-class>
+      <init-param>
+        <param-name>config</param-name>
+        <param-value>ServletConfig</param-value>
+      </init-param>
+      <init-param>
+        <param-name>layout</param-name>
+        <param-value>errorlist</param-value>
+      </init-param>
+      <!-- Load this servlet at server startup time -->
+      <load-on-startup>0</load-on-startup>
+    </servlet>
+
+<!-- MODTYPESHOW -->
+    <servlet>
+      <servlet-name>modtypeshow</servlet-name>
+      <description>
+      </description>
+      <servlet-class>SelectionServlet</servlet-class>
+      <init-param>
+        <param-name>config</param-name>
+        <param-value>ServletConfig</param-value>
+      </init-param>
+      <init-param>
+        <param-name>schedule</param-name>
+        <param-value>ScheduleRead</param-value>
+      </init-param>
+      <load-on-startup>0</load-on-startup>
+    </servlet>
+
+<!-- MODUSER -->
+    <servlet>
+      <servlet-name>moduser</servlet-name>
+      <description>
+      </description>
+      <servlet-class>ModifyUserServlet</servlet-class>
+      <init-param>
+        <param-name>config</param-name>
+        <param-value>ServletConfig</param-value>
+      </init-param>
+      <init-param>
+        <param-name>schedule</param-name>
+        <param-value>Schedule</param-value>
+      </init-param>
+      <load-on-startup>0</load-on-startup>
+    </servlet>
+
+<!-- MODUSERFAILURE -->
+    <servlet>
+      <servlet-name>moduserfailure</servlet-name>
+      <description>
+      </description>
+      <servlet-class>ErrorListServlet</servlet-class>
+      <init-param>
+        <param-name>config</param-name>
+        <param-value>ServletConfig</param-value>
+      </init-param>
+      <init-param>
+        <param-name>layout</param-name>
+        <param-value>errorlist</param-value>
+      </init-param>
+      <!-- Load this servlet at server startup time -->
+      <load-on-startup>0</load-on-startup>
+    </servlet>
+
+<!-- MODUSERSHOW -->
+    <servlet>
+      <servlet-name>modusershow</servlet-name>
+      <description>
+      </description>
+      <servlet-class>SelectionServlet</servlet-class>
+      <init-param>
+        <param-name>config</param-name>
+        <param-value>ServletConfig</param-value>
+      </init-param>
+      <init-param>
+        <param-name>schedule</param-name>
+        <param-value>ScheduleRead</param-value>
+      </init-param>
+      <load-on-startup>0</load-on-startup>
+    </servlet>
+
+<!-- NAVIGATOR -->
+    <servlet>
+      <servlet-name>navigator</servlet-name>
+      <description>
+      </description>
+      <servlet-class>NavigatorServlet</servlet-class>
+      <init-param>
+        <param-name>config</param-name>
+        <param-value>ServletConfig</param-value>
+      </init-param>
+      <init-param>
+        <param-name>schedule</param-name>
+        <param-value>ScheduleRead</param-value>
+      </init-param>
+     <init-param>
+        <param-name>layout</param-name>
+        <param-value>navigator</param-value>
+      </init-param>
+      <!-- Load this servlet at server startup time -->
+      <load-on-startup>0</load-on-startup>
+    </servlet>
+
+<!-- NOTALLOWED -->
+    <servlet>
+      <servlet-name>notallowed</servlet-name>
+      <description>
+      </description>
+      <servlet-class>ErrorListServlet</servlet-class>
+      <init-param>
+        <param-name>config</param-name>
+        <param-value>ServletConfig</param-value>
+      </init-param>
+      <init-param>
+        <param-name>layout</param-name>
+        <param-value>errorlist</param-value>
+      </init-param>
+      <!-- Load this servlet at server startup time -->
+      <load-on-startup>0</load-on-startup>
+    </servlet>
+
+<!-- OVERVIEW -->
+    <servlet>
+      <servlet-name>overview</servlet-name>
+      <description>
+      </description>
+      <servlet-class>OverviewServlet</servlet-class>
+      <init-param>
+        <param-name>major</param-name>
+        <param-value>overview</param-value>
+      </init-param>
+      <init-param>
+        <param-name>config</param-name>
+        <param-value>ServletConfig</param-value>
+      </init-param>
+      <init-param>
+        <param-name>schedule</param-name>
+        <param-value>ScheduleRead</param-value>
+      </init-param>
+      <init-param>
+        <param-name>layout</param-name>
+        <param-value>overview</param-value>
+      </init-param>
+      <!-- Load this servlet at server startup time -->
+      <load-on-startup>0</load-on-startup>
+    </servlet>
+
+<!-- SEARCH -->
+    <servlet>
+      <servlet-name>search</servlet-name>
+      <description>
+      </description>
+      <servlet-class>SearchServlet</servlet-class>
+      <init-param>
+        <param-name>config</param-name>
+        <param-value>ServletConfig</param-value>
+      </init-param>
+      <init-param>
+        <param-name>schedule</param-name>
+        <param-value>ScheduleRead</param-value>
+      </init-param>
+      <init-param>
+        <param-name>layout</param-name>
+        <param-value>search</param-value>
+      </init-param>
+      <!-- Load this servlet at server startup time -->
+      <load-on-startup>0</load-on-startup>
+    </servlet>
+
+<!-- SERVICEFORMS -->
+    <servlet>
+      <servlet-name>serviceforms</servlet-name>
+      <description>
+      </description>
+      <servlet-class>ServiceFormsServlet</servlet-class>
+      <init-param>
+        <param-name>config</param-name>
+        <param-value>ServletConfig</param-value>
+      </init-param>
+      <init-param>
+        <param-name>schedule</param-name>
+        <param-value>ScheduleRead</param-value>
+      </init-param>
+      <init-param>
+        <param-name>layout.sql</param-name>
+        <param-value>sql</param-value>
+      </init-param>
+      <init-param>
+        <param-name>layout.workload</param-name>
+        <param-value>workload</param-value>
+      </init-param>
+      <load-on-startup>0</load-on-startup>
+    </servlet>
+ 
+<!-- SERVICEMENUE -->
+    <servlet>
+      <servlet-name>servicemenue</servlet-name>
+      <description>
+      </description>
+      <servlet-class>MenueServlet</servlet-class>
+      <init-param>
+        <param-name>config</param-name>
+        <param-value>ServletConfig</param-value>
+      </init-param>
+      <init-param>
+        <param-name>layout</param-name>
+        <param-value>menue</param-value>
+      </init-param>
+      <!-- Load this servlet at server startup time -->
+      <load-on-startup>0</load-on-startup>
+    </servlet>
+
+<!-- SCHEDULE -->
+    <servlet>
+      <servlet-name>schedule</servlet-name>
+      <description>
+      </description>
+      <servlet-class>OuterFrameServlet</servlet-class>
+      <init-param>
+        <param-name>config</param-name>
+        <param-value>ServletConfig</param-value>
+      </init-param>
+      <init-param>
+        <param-name>schedule</param-name>
+        <param-value>ScheduleRead</param-value>
+      </init-param>
+      <!-- Load this servlet at server startup time -->
+      <load-on-startup>0</load-on-startup>
+    </servlet>
+
+<!-- SHOWTYPEFAILURE -->
+    <servlet>
+      <servlet-name>showtypefailure</servlet-name>
+      <description>
+      </description>
+      <servlet-class>ErrorListServlet</servlet-class>
+      <init-param>
+        <param-name>config</param-name>
+        <param-value>ServletConfig</param-value>
+      </init-param>
+      <init-param>
+        <param-name>layout</param-name>
+        <param-value>errorlist</param-value>
+      </init-param>
+      <!-- Load this servlet at server startup time -->
+      <load-on-startup>0</load-on-startup>
+    </servlet>
+
+
+<!-- SQL -->
+    <servlet>
+      <servlet-name>sql</servlet-name>
+      <description>
+      </description>
+      <servlet-class>SQLServlet</servlet-class>
+      <init-param>
+        <param-name>config</param-name>
+        <param-value>ServletConfig</param-value>
+      </init-param>
+      <init-param>
+        <param-name>schedule</param-name>
+        <param-value>ScheduleRead</param-value>
+      </init-param>
+      <init-param>
+        <param-name>1</param-name>
+        <param-value>ScheduleRead</param-value>
+      </init-param>
+      <init-param>
+        <param-name>2</param-name>
+        <param-value>ServletConfig</param-value>
+      </init-param>
+      <!-- Load this servlet at server startup time -->
+      <load-on-startup>0</load-on-startup>
+    </servlet>
+
+<!-- STATICDATAMENUE -->
+    <servlet>
+      <servlet-name>staticdatamenue</servlet-name>
+      <description>
+      </description>
+      <servlet-class>MenueServlet</servlet-class>
+      <init-param>
+        <param-name>config</param-name>
+        <param-value>ServletConfig</param-value>
+      </init-param>
+      <init-param>
+        <param-name>layout</param-name>
+        <param-value>menue</param-value>
+      </init-param>
+      <!-- Load this servlet at server startup time -->
+      <load-on-startup>0</load-on-startup>
+    </servlet>
+
+<!-- USERMENUE -->
+    <servlet>
+      <servlet-name>usermenue</servlet-name>
+      <description>
+      </description>
+      <servlet-class>MenueServlet</servlet-class>
+      <init-param>
+        <param-name>config</param-name>
+        <param-value>ServletConfig</param-value>
+      </init-param>
+      <init-param>
+        <param-name>layout</param-name>
+        <param-value>menue</param-value>
+      </init-param>
+      <!-- Load this servlet at server startup time -->
+      <load-on-startup>0</load-on-startup>
+    </servlet>
+
+<!-- WELLCOME -->
+    <servlet>
+      <servlet-name>wellcome</servlet-name>
+      <description>
+      </description>
+      <servlet-class>IntroServlet</servlet-class>
+      <init-param>
+        <param-name>config</param-name>
+        <param-value>ServletConfig</param-value>
+      </init-param>
+      <init-param>
+        <param-name>layout</param-name>
+        <param-value>default</param-value>
+      </init-param>
+      <load-on-startup>0</load-on-startup>
+    </servlet>
+
+<!-- WORKLOAD -->
+    <servlet>
+      <servlet-name>workload</servlet-name>
+      <description>
+      </description>
+      <servlet-class>WorkloadServlet</servlet-class>
+      <init-param>
+        <param-name>config</param-name>
+        <param-value>ServletConfig</param-value>
+      </init-param>
+      <init-param>
+        <param-name>schedule</param-name>
+        <param-value>ScheduleRead</param-value>
+      </init-param>
+      <load-on-startup>0</load-on-startup>
+    </servlet>
+
+<!-- WORKLOAD-FAILURE -->
+    <servlet>
+      <servlet-name>workloadfailure</servlet-name>
+      <description>
+      </description>
+      <servlet-class>ErrorListServlet</servlet-class>
+      <init-param>
+        <param-name>config</param-name>
+        <param-value>ServletConfig</param-value>
+      </init-param>
+      <init-param>
+        <param-name>layout</param-name>
+        <param-value>errorlist</param-value>
+      </init-param>
+      <!-- Load this servlet at server startup time -->
+      <load-on-startup>0</load-on-startup>
+    </servlet>
+
+    <!-- Define mappings that are used by the servlet container to
+         translate a particular request URI (context-relative) to a
+         particular servlet.  The examples below correspond to the
+         servlet descriptions above.  Thus, a request URI like:
+
+           http://localhost:8080/{contextpath}/graph
+
+         will be mapped to the "graph" servlet, while a request like:
+
+           http://localhost:8080/{contextpath}/saveCustomer.do
+
+         will be mapped to the "controller" servlet.
+
+         You may define any number of servlet mappings, including zero.
+         It is also legal to define more than one mapping for the same
+         servlet, if you wish to.
+    -->
+
+    <!-- Define the default session timeout for your application,
+         in minutes.  From a servlet or JSP page, you can modify
+         the timeout for a particular session dynamically by using
+         HttpSession.getMaxInactiveInterval(). -->
+
+    <session-config>
+      <session-timeout>30</session-timeout>    <!-- 30 minutes -->
+    </session-config>
+
+
+</web-app>
+

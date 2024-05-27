@@ -1,0 +1,1 @@
+osql -S FINDUS -d schedule -U scw

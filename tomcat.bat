@@ -1,0 +1,1 @@
+start c:\Programme\Java\j2sdk1.4.0_03\bin\java.exe -Xrs -Xmx125000000 -Djava.security.manager -Djava.security.policy=C:\Programme\Apache-Group\jakarta-tomcat-3.3.1a\conf\tomcat.policy -cp C:\Programme\Apache-Group\jakarta-tomcat-3.3.1a\lib\tomcat.jar org.apache.tomcat.startup.Main start

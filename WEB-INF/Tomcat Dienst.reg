@@ -1,0 +1,23 @@
+REGEDIT4
+
+[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\Tomcat]
+"Type"=dword:00000010
+"Start"=dword:00000002
+"ErrorControl"=dword:00000001
+"ImagePath"=hex(2):43,3a,5c,50,72,6f,67,72,61,6d,6d,65,5c,53,65,72,76,69,63,65,\
+  20,49,6e,73,74,61,6c,6c,65,72,5c,73,72,75,6e,6e,65,72,2e,65,78,65,00
+"DisplayName"="Tomcat 3.3.1a"
+"ObjectName"="LocalSystem"
+
+[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\Tomcat\Parameters]
+"Installer"="servinst"
+"Arguments"="-Xrs -Xmx125000000 -Djava.security.manager -Djava.security.policy=C:\\Programme\\Apache-Group\\jakarta-tomcat-3.3.1a\\conf\\tomcat.policy -cp C:\\Programme\\Apache-Group\\jakarta-tomcat-3.3.1a\\lib\\tomcat.jar org.apache.tomcat.startup.Main start"
+"Directory"="C:\\Programme\\Apache-Group\\jakarta-tomcat-3.3.1a"
+"Runfile.org"="C:\\Programme\\Java\\j2re1.4.1_01\\bin\\java.exe"
+"Runfile"="c:\\Programme\\Java\\j2sdk1.4.0_03\\bin\\java.exe"
+
+[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\Tomcat\Enum]
+"0"="Root\\LEGACY_TOMCAT\\0000"
+"Count"=dword:00000001
+"NextInstance"=dword:00000001
+
